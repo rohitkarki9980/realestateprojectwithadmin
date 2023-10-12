@@ -1,0 +1,432 @@
+.container {
+  min-height: calc(100vh - 60px);
+  width: 100%;
+  background-color: rgb(187, 206, 222);
+  z-index: 1;
+  margin-top: -2rem;
+  position: relative;
+  padding-bottom: 20px;
+
+}
+.firstTitles{
+  font-size: 2rem;
+    font-weight: bold;
+    color: #1f3e72;
+    padding-top: 2rem;
+
+    text-align: center;
+
+}
+.wrapper {
+  z-index: 2;
+  
+  width: 70%;
+  height: 100%;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+ 
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  
+  margin-bottom: 1rem;
+}
+
+.wrapper> .ImageContainer{
+  height: 30rem;
+
+  margin-bottom: 1rem;
+
+}
+.left{
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+ 
+}
+
+.ImageContainer >img{
+  height: 100%;
+}
+.leftRight{
+  display: flex;
+ 
+}
+.title{
+  color: #1f3e72;
+  font-size: 2rem;
+  font-weight: 600;
+}
+.boxes{
+  border: 1px solid grey;
+  border-radius: 12px;
+  width:60%;
+  padding: 10px;
+  font-size: 1.4rem;
+  
+}
+.boxes:nth-child(6){
+ 
+  margin-bottom: 1rem;
+}
+
+.boxes >span{
+  color: rgb(52, 52, 51);
+  font-size: 1.2rem;
+}
+
+.bookContact {
+  position: absolute;
+bottom: 8rem;
+left: 25rem;
+  width: 15rem;
+  height: 5rem;
+}
+.contactOwner {
+  width: 70%;
+  height: 2.7rem;
+  text-align: center;
+  border: 1px solid transparent;
+  outline: none;
+  margin-top: 10rem;
+  margin-right: 9px;
+  padding: 0.4rem 1rem;
+  white-space: nowrap;
+  background-color: white;
+  border-radius: 10px;
+  color: #333;
+  cursor: pointer;
+  font-weight: bold;
+  transition-duration: 500ms;
+}
+
+.contactOwner:hover {
+  color: #262529;
+  font-weight: bold;
+  background-color: #fff;
+  scale: 1.1;
+}
+
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.controls > a {
+  width: 60%;
+  height: 2.7rem;
+  text-align: center;
+  outline: none;
+  border: none;
+  padding: 0.6rem 0.75rem;
+  text-decoration: none;
+  font-size: 20px;
+  background-color: green;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+.controls > button {
+  width: 40%;
+  height: 2.7rem;
+  padding: 0.4rem 1rem;
+  margin-right: 10px;
+  text-align: center;
+  outline: none;
+  border: none;
+  padding: 0.25rem 0.75rem;
+  font-size: 20px;
+  background-color: #f00;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 2rem;
+  cursor: pointer;
+ 
+}
+
+
+/* list property */
+
+.contactForm {
+  position: absolute;
+  top: 20rem;
+  right: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999999999;
+  /* From https://css.glass */
+background: rgba(255, 255, 255, 0)
+}
+
+.contactFormWrapper {
+  position: relative;
+  background-color: #000000;
+  height: 70vh;
+  width: 25vw;
+  border-radius: 20px;
+  /* From https://css.glass */
+background: rgba(255, 255, 255, 0);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+border: 1px solid rgba(255, 255, 255, 0.82);
+}
+
+.contactFormWrapper > h2 {
+  text-align: center;
+ margin-top: 1rem;
+  margin-bottom: 2.2rem;
+  text-shadow: #e0e0e0 1px 1px 0, 2px 2px 2px rgba(37,16,10,0);
+color: #000000;
+}
+
+.contactFormWrapper > form > div > label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+.contactFormWrapper > form >input{
+width: 90%;
+height: 3rem;
+margin: auto;
+border-radius: 20px;
+border: none;
+outline:none;
+padding: 10px;
+
+}
+
+.contactFormWrapper .bttns {
+  
+  transition: 1000ms;
+  background-color: white;
+  color: #333;
+  border: #112;
+  width: 40%;
+  padding: 10px;
+  border-radius: 12px;
+  margin: auto;
+  color:green;
+  font-weight: 600;
+  font-size: 1.1rem;
+
+}
+.contactFormWrapper .bttns:hover {
+ 
+  scale: 1.01;
+  color:#616161;
+
+}
+
+.removeIcon {
+  position: absolute;
+  top: 0.5rem;
+  right: -11rem;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  color: rgb(255, 0, 0);
+}
+
+.contactBookmarkControls {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.contactBookmarkControls > * {
+  cursor: pointer;
+}
+
+.error {
+  height: 70px;
+  width: 250px;
+  text-align: center;
+  border-radius: 20px;
+  line-height: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: rgb(238, 8, 8);
+  color: #fff;
+  position: fixed;
+  top: 5rem;
+  right: 5rem;
+  font-weight: 500;
+}
+
+.success {
+  z-index: 999999999999;
+  height: 70px;
+  width: 250px;
+  text-align: center;
+  border-radius: 20px;
+  line-height: 1.5rem;
+  padding: 1.5rem;
+  background-color: green;
+  color: #fff;
+  position: absolute;
+  
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.noFuncMessage {
+  margin-top: 2.5rem;
+  font-size: 22px;
+  color: #333;
+  transition: 150ms all;
+  background: white;
+  color:black;
+  padding: 10px;
+  border-radius: 12px;
+}
+.noFuncMessage >a{
+  text-decoration: none;
+
+}
+
+.noFuncMessage:hover {
+  color: #555;
+}
+
+.commentSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  width: 50%;
+  align-items: center;
+  -webkit-border-radius: 44px;
+border-radius: 22px;
+-webkit-box-shadow: 8px 8px 22px #b4bacb, -8px -8px 22px #eef6ff;
+box-shadow: 8px 8px 22px #b4bacb, -8px -8px 22px #eef6ff;
+}
+
+.commentInput {
+  padding: 0.6rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  border-bottom: 2px solid #a4aeb7;
+}
+
+.commentInput > img {
+  width: 6%;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.commentInput > input {
+  flex: 1;
+  outline: none;
+  border: none;
+  padding: 1rem;
+  border-radius: 20px;
+  height: 3rem;
+  width: 80%;
+}
+
+.commentInput > button {
+  outline: none;
+  width: 10%;
+  height: 3rem;
+  border: none;
+  background-color: #fff;
+  color: #616161;
+  padding: 0.25rem 0.75rem;
+  border-radius: 16px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 1000ms;
+}
+.commentInput > button:active{
+  background-color: green;
+}
+.commentInput > button:hover{
+scale: 1.1;
+}
+
+.comments {
+  max-height: 300px;
+  overflow: auto;
+  margin-top: 1.25rem;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  
+}
+.noCommentsMessage{
+  font-size: 1rem;
+}
+/* RESPONSIVE */
+
+@media only screen and (max-width: 992px) {
+  .left {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .left > img {
+    width: 90%;
+    height: 75%;
+  }
+
+  .right {
+    width: 90%;
+  }
+
+  .contactFormWrapper {
+   
+
+    height: 75vh;
+    width: 35vw;
+  
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .left {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .left > img {
+    width: 90%;
+    height: 75%;
+  }
+  .contactFormWrapper {
+    height: 75vh;
+    width: 50vw;
+  }
+
+  .contactOwner {
+    width: 150px;
+  }
+}
