@@ -1,11 +1,11 @@
 .r-wrapper{
-    
     width: 80%;
     margin: auto;
     margin-top: 4rem;
     box-shadow: 0.2px 0.2px 2px rgba(0, 0, 0, 0.164);
     border-radius: 12px;
 }
+
 .location{
     display: flex;
     justify-content: flex-start;
@@ -75,7 +75,6 @@
   }
   .r-buttons button{
     font-size: 1.2rem;
-
     padding: .2rem .8rem;
     color: blue;
     border: none;
@@ -83,6 +82,7 @@
     background-color: white;
     cursor: pointer;
   }
+
   .r-buttons>:nth-child(1)
   {
     width: 48%;

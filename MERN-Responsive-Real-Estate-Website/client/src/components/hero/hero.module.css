@@ -1,7 +1,8 @@
 .container {
-  height: calc(100vh - 60px);
+
   background: black;
   padding-top: 60px;
+  scroll-behavior: smooth;
 }
 
 .wrapper {

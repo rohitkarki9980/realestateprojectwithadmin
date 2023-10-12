@@ -32,7 +32,20 @@ const Navbar = () => {
   const { user, token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const isAdmin =user?.isAdmin
+  // Update the window width state when the window is resized
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
 
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   useEffect(() => {
     setState((prev) => {
       return { ...prev, district: "Bagmati Province", type: "apartments" };
@@ -196,7 +209,17 @@ const Navbar = () => {
                       Logout
                     </div>
                   </Link>
-
+                  {isAdmin ? <Link
+                    to={`/admin`}
+                    onClick={() => setShowModal((prev) => !prev)}
+                    className={classes.anchorFive}
+                  >
+                    <div className={classes.iconFive}>
+                 
+                      <BsPersonLock size={"24px"}  color={"red"} />
+                    </div>
+                    <div className={classes.listProp}> Admin</div>
+                  </Link> :(<span style={{display:"none"}}></span>)}
                   <Link
                     to={`/my-profile`}
                     onClick={() => setShowModal((prev) => !prev)}
@@ -233,25 +256,15 @@ const Navbar = () => {
                   <Link
                     to={`/create-yacht`}
                     onClick={() => setShowModal((prev) => !prev)}
-                    className={classes.anchorFour}
+                    className={classes.anchorSix}
                   >
-                    <div className={classes.iconFour}>
+                    <div className={classes.iconSix}>
                       {" "}
                       <GoListUnordered size={"24px"} />
                     </div>
-                    <div className={classes.yachtBtn}>List your flat</div>
+                    <div className={classes.listFlat}>List your flat</div>
                   </Link>
-                  <Link
-                    to={`/admin`}
-                    onClick={() => setShowModal((prev) => !prev)}
-                    className={classes.anchorFive}
-                  >
-                    <div className={classes.iconFive}>
-                 
-                      <BsPersonLock size={"24px"}  color={"red"} />
-                    </div>
-                    <div className={classes.listProp}>Admin</div>
-                  </Link>
+                
                 </div>
               )}
             </>
@@ -261,15 +274,24 @@ const Navbar = () => {
       {
         // desktop screen
         !showMobileNav && showForm && (
-          <div className={classes.listPropertyForm} onClick={handleCloseForm}>
+          <div  
+          className={windowWidth >= 600 ? `${classes.listPropertyForm}` : `${classes.hiddenForm}`}
+          onClick={handleCloseForm}>
             <div
-              className={classes.listPropertyWrapperDesktop}
+              className={classes.listPropertyWrapperDesktop }
+              
               onClick={(e) => e.stopPropagation()}
             >
+               <div className={classes.removeIconOfProperty}>
+               <AiOutlineClose
+                  onClick={handleCloseForm}
+                  color={"red"}
+                />
+                </div>
               <h2>List Property</h2>
               <form
                 onSubmit={handleListProperty}
-                className={classes.desktopForm}
+                className={classes.desktopForm }
               >
                 <input
                   value={state?.title}
@@ -349,16 +371,13 @@ const Navbar = () => {
                     style={{ display: "none" }}
                     onChange={(e) => setPhoto(e.target.files[0])}
                   />
-                  {photo && <p>{photo.name}</p>}
+                  {photo && <div style={{color:"red", fontSize:"0.8rem"}}>{photo.name.slice(0,10)}</div>}
                 </div>
 
                 <div className={classes.buttonProp}>
                   <button>List property</button>
                 </div>
-                <AiOutlineClose
-                  onClick={handleCloseForm}
-                  className={classes.removeIconOfProperty}
-                />
+               
               </form>
             </div>
           </div>
@@ -387,12 +406,8 @@ const Navbar = () => {
                   <li className={classes.mobileListItem}>About</li>
                   <li className={classes.mobileListItem}>Featured</li>
                   <li className={classes.mobileListItem}>Contacts</li>
-                  <li>{user ?(<Link
-                        onClick={() => setShowForm(true)}
-                        className={classes.mobileNavList}
-                      >
-                        List your property
-                      </Link>):(<span style={{display:"none"}}></span>)}</li>
+                  <li className={classes.mobileListItem}>{isAdmin ?<li>Admin</li>:(<span style={{display:"none"}}></span>)}</li>
+                  
                 </ul>
                 <div className={classes.mobileRight}>
                   {!user ? (
@@ -432,100 +447,14 @@ const Navbar = () => {
                     </>
                   )}
                 </div>
-                {showForm && (
-                  <div
-                    className={classes.MobileListPropertyForm}
-                    onClick={handleCloseForm}
-                  >
-                    <div
-                      className={classes.listPropertyWrapper}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <h2>List Property</h2>
-                      <form onSubmit={handleListProperty}>
-                        <input
-                          value={state?.title}
-                          type="text"
-                          placeholder="Title"
-                          name="title"
-                          onChange={handleState}
-                        />
-                        <input
-                          value={state?.type}
-                          type="text"
-                          placeholder="Type"
-                          name="type"
-                          onChange={handleState}
-                        />
-                        <input
-                          value={state?.desc}
-                          type="text"
-                          placeholder="Desc"
-                          name="desc"
-                          onChange={handleState}
-                        />
-                        <input
-                          value={state?.district}
-                          type="text"
-                          placeholder="District"
-                          name="district"
-                          onChange={handleState}
-                        />
-                        <input
-                          value={state?.price}
-                          type="number"
-                          placeholder="Price"
-                          name="price"
-                          onChange={handleState}
-                        />
-                        <input
-                          value={state?.sqmeters}
-                          type="number"
-                          placeholder="Sq. meters"
-                          name="sqmeters"
-                          onChange={handleState}
-                        />
-                        <input
-                          value={state?.BHK}
-                          type="number"
-                          placeholder="BHK"
-                          name="BHK"
-                          step={1}
-                          min={1}
-                          onChange={handleState}
-                        />
-                        <div
-                          style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "12px",
-                            width: "50%",
-                          }}
-                        >
-                          <label htmlFor="photo">Property picture +</label>
-                          <input
-                            type="file"
-                            id="photo"
-                            style={{ display: "none" }}
-                            onChange={(e) => setPhoto(e.target.files[0])}
-                          />
-                          {photo && <p>{photo.name}</p>}
-                        </div>
-                        <button>List property</button>
-                      </form>
-                      <AiOutlineClose
-                        onClick={handleCloseForm}
-                        className={classes.listPropertyRemoveIcon}
-                      />
-                    </div>
-                  </div>
-                )}
+               
               </div>
             </div>
           )}
           {!showMobileNav && (
             <GiHamburgerMenu
               onClick={() => setShowMobileNav((prev) => !prev)}
+
               className={classes.hamburgerIcon}
             />
           )}

@@ -227,7 +227,7 @@ const PropertyDetail = () => {
           <div className={classes.map}>
                 Location :{propertyDetail?.location}
                 <Map
-                 address={propertyDetail?.location} province={propertyDetail?.province} country={"nepal"}
+                 address={propertyDetail?.location} district={`,${propertyDetail?.district},` } country={"Nepal"}
                 />
               </div>
           </div>

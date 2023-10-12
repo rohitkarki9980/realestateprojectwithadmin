@@ -61,7 +61,6 @@ propertyController.get('/find', async (req, res) => {
     }
 })
 
-// TODO FETCH TYPE OF PROPERTIES. EX: {CITY: 34, MOUNTAIN: 23}
 propertyController.get('/find/types', async (req, res) => {
     try {
         const apartmentsType = await Property.countDocuments({ type: 'apartments' })
@@ -153,12 +152,12 @@ propertyController.post('/', verifyToken, async (req, res) => {
 })
 
 // update estate
-propertyController.put('/:id',verifyToken, async (req, res) => {
+propertyController.put('/:id', verifyToken, async (req, res) => {
     try {
         const property = await Property.findById(req.params.id)
-        if (property.currentOwner.toString() !== req.user.id || !req.user.isAdmin) {
-            return res.status(403).json({ message: "You are not allowed to update other people's properties" });
-          }
+        if (property.currentOwner.toString() !== req.user.id) {
+            throw new Error("You are not allowed to update other people's properties")
+        }
 
         const updatedProperty = await Property.findByIdAndUpdate(
             req.params.id,

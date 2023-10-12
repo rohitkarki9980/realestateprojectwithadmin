@@ -44,7 +44,7 @@ const Residencies = ({ property }) => {
                 </span>
                 <span className="primaryText">{property.title}</span>
                 <span className="location" style={{ fontSize:"1.1rem",color:"black" }}>
-                  <span style={{width: "10%"}}> <HiOutlineLocationMarker   size={"20px"} color={'red'}/></span>
+                  <span style={{width: "10%"}}> <HiOutlineLocationMarker size={"20px"} color={'red'}/></span>
                    <span style={{ fontSize:"1rem",color:"black" }}>{property?.location}</span>
                    </span>
                 

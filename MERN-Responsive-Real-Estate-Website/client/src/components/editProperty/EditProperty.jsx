@@ -95,9 +95,9 @@ const EditProperty = () => {
           />
           <select required name="type" onChange={handleState}>
             <option disabled>Select Type</option>
-            <option value="city">Terai</option>
-            <option value="village">Hilly</option>
-            <option value="mountain">Himalayan</option>
+                  <option value="apartments">Apartments</option>
+                  <option value="townhouse">Town House</option>
+                  <option value="colony">Colony</option>
           </select>
           <input
             value={propertyDetails?.desc}

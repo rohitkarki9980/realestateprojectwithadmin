@@ -47,9 +47,12 @@
  
 }
 .centerImp {
+  width: 45%;
   display: flex;
+  justify-content: space-around;
   list-style: none;
   cursor: pointer;
+  gap: 2rem;
 }
 .centerImp > .listItem {
   gap: 10px;
@@ -158,6 +161,7 @@ margin-bottom: 10px;
   backdrop-filter: blur(11.5px);
   -webkit-backdrop-filter: blur(11.5px);
   border: 1px solid rgba(143, 129, 129, 0.3);
+  padding: 0 2rem 0;
 }
 
 .listPropertyWrapperDesktop > h2 {
@@ -174,12 +178,32 @@ margin-bottom: 10px;
 
 
 .listPropertyWrapperDesktop > .desktopForm > .labels {
-  margin-left: 9rem;
-  font-size: 1.2rem;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ border: 1px solid rgb(87, 77, 77);
   color: orange;
-  
+  padding: 10px;
   border-radius: 10px;
-  padding: 0.5rem 0.75rem;
+ 
+}
+.labels>div{
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ border: 1px solid white;
+ border-radius: 12px;
+ padding: 5px;
+ width: 50%;
+ font-size: 1rem;
+}
+.listPropertyWrapperDesktop > .desktopForm >{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+
 }
 
 .listPropertyWrapperDesktop > .desktopForm > .labels:hover {
@@ -188,28 +212,26 @@ margin-bottom: 10px;
 }
 
 .listPropertyWrapperDesktop > .desktopForm > input {
-  width: 86%;
+ 
   height: 2.5rem;
   border-radius: 12px;
-  margin-left: 3rem;
   border: none;
   padding-left: 1rem;
-  margin-right: 2rem;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 .listPropertyWrapperDesktop > .desktopForm > select {
-  width: 86%;
+  
   height: 2.5rem;
   display: flex;
   color: grey;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
   background-color: white;
   border: none;
   border-radius: 12px;
   padding-left: 1rem;
-  margin-left: 3rem;
-  margin-right: 2rem;
+ 
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
@@ -217,8 +239,8 @@ margin-bottom: 10px;
   transition: 1s ease-in-out;
   width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 40px;
 }
 
@@ -239,11 +261,16 @@ margin-bottom: 10px;
   color: #117964;
   font-weight: bold;
 }
-
+.hiddenForm{display: none;}
 .removeIconOfProperty {
   position: absolute;
-  top: 1rem;
-  left:15rem;
+  width: 10%;
+ height: auto;
+ display: flex;
+ align-items: flex-end;
+ justify-content: flex-end;
+  top: 0;
+  left: 0;
   font-size: 22px;
   cursor: pointer;
   color: #ed0d0d;
@@ -333,13 +360,15 @@ margin-bottom: 10px;
 .anchorTwo>.iconTwo,
 .anchorThree>.iconThree,
 .anchorFour>.iconFour,
-.anchorFive>.iconFive {
+.anchorFive>.iconFive,
+.anchorSix>.iconSix{
   width: 30%;
   font-size: 1.2rem;
   font-weight: 700;
   color: blue;
  
 }
+
 
 .userModal > .anchor{
   display: flex;
@@ -367,7 +396,20 @@ backdrop-filter: blur(5px);
 -webkit-backdrop-filter: blur(5px);
 border: 1px solid rgba(255, 255, 255, 0.1);
 }
+.anchorSix{
+  display: flex;
+  height: 3rem;
+align-items: center;
+background: rgba(52, 50, 50, 0.745);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.1);
 
+    border-bottom-left-radius:16px ;
+    border-bottom-right-radius:16px ;
+  
+}
 
 .anchorTwo>.myProfile {
   width: 70%;
@@ -375,6 +417,12 @@ border: 1px solid rgba(255, 255, 255, 0.1);
    color: orange;
    font-weight: 700;
  
+}
+.anchorSix>.listFlat{
+  width: 70%;
+  font-size: 1.2rem;
+   color: orange;
+   font-weight: 700;
 }
 
 .anchorThree>.listProps {
@@ -397,14 +445,14 @@ border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   height: 3rem;
-  border-bottom-left-radius:16px ;
-  border-bottom-right-radius:16px ;
+
   padding-top: 0.5rem;
   background: rgba(52, 50, 50, 0.745);
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(5px);
 -webkit-backdrop-filter: blur(5px);
 border: 1px solid rgba(255, 255, 255, 0.1);
+
 
 }
 
@@ -443,12 +491,50 @@ border: 1px solid rgba(255, 255, 255, 0.34);
 }
 
 /* RESPONSIVEE */
+@media only screen and (max-width: 900px){
+  .listPropertyWrapperDesktop{
+   position: absolute;
+   left: 50vh ;
+   width:40%;
+   
+  }
+ 
+.centerImp{
+ margin-left: 2rem;
 
-@media only screen and (max-width: 768px) and (min-width:400px) {
+  gap: 1rem;
+}
+.centerImp > .listItem {
+  gap: 10px;
+  
+}
+.right{
+ margin-right: 4rem;
+}
+.linker {
+  text-decoration: none;
+  color: rgb(135, 134, 129);
+  font: 1.2rem "Gill Sans";
+}
+.listItem > .linker:hover {
+  color: #eaeae8;
+}
+
+.right{
+
+}
+
+}
+
+
+
+@media only screen and (max-width: 768px){
   
   .listPropertyWrapper {
     position: absolute;
-    left: 18rem;
+    border: 1px solid red;
+    left: 30vh ;
+    width:40%;
   }
 
   .wrapper {
@@ -479,15 +565,13 @@ border: 1px solid rgba(255, 255, 255, 0.34);
     background-color: transparent;
   }
 
- 
-  
- 
+
  .mobileCloseIcon {
     position: absolute;
-    top: 1rem;
-    left: 11rem;
-    font-size: 2rem;
-    color: whitesmoke;
+    top: 0.3rem;
+    left: 12rem;
+    font-size: 1.4rem;
+    color: rgb(255, 0, 0);
     z-index: 99999999999;
   }
   .navigation {
@@ -529,19 +613,21 @@ border: 1px solid rgba(255, 255, 255, 0.34);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: flex-start;
+    align-items: center;
     text-decoration: none;
     list-style: none;
     padding-left: 1rem;
     border-top: 1px solid grey;
+ 
   
   }
 
   .mobileCenter > .mobileListItem {
     display: flex;
+  
     justify-content: flex-start;
     align-items: center;
-    width: 90%;
+    width: 50%;
     height: 5rem;
     gap: 1rem;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
