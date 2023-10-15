@@ -224,6 +224,8 @@ propertyController.put('/bookmark/:id', verifyToken, async (req, res) => {
     }
 })
 
+
+
 // delete estate
 propertyController.delete('/:id', verifyToken, async (req, res) => {
     try {

@@ -4,6 +4,7 @@
   right: 0;
   background-color: aliceblue;
   margin-bottom: 1rem;
+  border: 1px solid red;
 }
 .container {
   display: flex;
@@ -29,23 +30,114 @@
    font-size: 2rem;
 }
 
+ .lefter{
+  width: fit-content;
+  border: 1px solid rgba(128, 128, 128, 0.341);
+  padding: 0 10px 10px 10px;
+  border-radius: 12px;
+
+}
+.formersBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+.searchTerm{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+   margin: auto;
+}
+.searchTerm >label{
+width: 20%;
+font-weight: bold;
+}
+
+.searchInput{
+ 
+  width: 80%;
+  padding: 8px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+}
+.minPrice ,.maxPrice{
+  border-radius: 12px ;
+  padding: 8px;
+  border: none;
+  outline: none;
+
+}
+.checker{
+  display: flex;
+  align-items: center;
+ gap: 20px;
+ border: 1px solid grey;
+ padding: 10px;
+ border-radius: 12px;
+ box-shadow: 1px 1px 0.4px black;
+}
+.checker>label{
+  font-size: 1.3rem;
+  color: rgb(44, 43, 43);
+}
+.checkBox{
+  border: 1px solid red;
+  width: 20px;
+  height: 20px;
+}
+.checkMate{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.checkMate>label{
+  font-size: 1.1rem;
+  color: slateblue;
+}
+
+.whiteButton{
+  color: white;
+  width: 60%;
+  margin: auto;
+  border-radius:12px;
+  background-color:slateblue;
+  padding: 10px;
+  border: none;
+  outline: none;
+  margin-top: 1rem;
+}
+
+
+.labels{
+ width: 55%;
+  white-space:no-Wrap;
+  font-size: 1rem;
+}
+.borderRounded{
+  width: 180px;
+  padding: 8px;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+}
+
 .featuredProperties {
   height: max-content;
-  
   padding-bottom: 10px;
   border-radius: 20px;
   cursor: pointer;
   transition: 150ms all ease-in-out;
-  border: 1px solid #dbdbe8;
-  box-shadow: 20px 20px 60px #a5a5a5, -20px -20px 60px #dfdfdf;
+ display: flex;
 }
 
-.featuredProperties:hover {
-  scale: 1.005;
-}
+
 .propertyContainer{
  margin:1rem;
- width: 350px;
+
  margin-bottom: 2rem;
  display: grid;
   grid-template-columns: repeat(3, 1fr);

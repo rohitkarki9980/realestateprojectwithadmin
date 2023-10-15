@@ -146,9 +146,9 @@ const EditProperty = () => {
                   onChange={handleState}
                 />
                 
-          <div className={classes.labels}>
+          <div className={classes.loves}>
             <label htmlFor="photo">
-              Upload Property Picture <BsFillHouseAddFill size={"25px"} />{" "}
+              Upload Property Picture <span style={{width:"40%"}}><BsFillHouseAddFill  size={"25px"} /></span>
             </label>
             <input
               type="file"
@@ -159,7 +159,7 @@ const EditProperty = () => {
 
             {photo && <p>{photo.name}</p>}
           </div>
-          <button type="submit" color="black" className={classes.bttn}>
+          <button className={classes.bttns} type="submit" color="black">
             Edit
           </button>
         </form>

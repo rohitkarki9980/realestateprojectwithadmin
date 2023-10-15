@@ -1,4 +1,4 @@
-export const arrDistrict = [
+const arrDistrict = [
     'Province One',
     'Province Two',
     'Bagmati Province',

@@ -31,6 +31,8 @@ import PropertiesAdmin from './components/admin/PropertiesAdmin/PropertiesAdmin'
 import AboutPanel from './components/AboutUs/AboutPanel'
 import FilterProperty from './components/filterProperty/FilterProperties';
 import FeatureProperties from './components/AllPropertyFiles/FeatureProperties/FeatureProperty'
+import PaymentPage from './components/PaymentPage/PaymentPage';
+
 function App() {
     const {user} = useSelector((state) => state.auth)
     const isAdmin = user?.isAdmin
@@ -157,7 +159,15 @@ function App() {
                             <EditProperty/>
                             <Footer/>
                         </> : <Navigate to='/signin'/>}/>
-                   
+
+
+                        <Route path='/paymentPage/:id'
+                        element={user ?
+                          <> <Navbar/> <PaymentPage/></>:<Navigate to='/signin'/>
+                            
+                        }
+                        
+                        />
 
                 <Route path='/my-profile'
                     element={

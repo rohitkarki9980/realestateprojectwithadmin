@@ -1,6 +1,8 @@
 .container {
   height: 100%;
   width: 100%;
+  border: 1px solid red;
+  margin-bottom: 1rem;
 }
 
 .container > h2 {
@@ -9,9 +11,12 @@
   align-items: center;
   margin-top: 2rem;
   font-size: 2rem;
+  color: blue;
+  font-weight: 600;
+  text-shadow: 1px 1px 0.7px black;
 }
 .wrapper {
-  height: fit-content;
+  height: 100%;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.45);
   display: flex;
@@ -21,6 +26,7 @@
  
   /* From https://css.glass */
   background: rgba(255, 255, 255, 0);
+  padding-bottom: 10px;
 }
 
 .wrapper > form {
@@ -45,6 +51,7 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.82);
+  padding-bottom: 1rem;
 }
 .wrapper > form > input {
   width: 90%;
@@ -68,34 +75,48 @@
     width: 89%;
     padding-left: 25px;
 }
-.wrapper > .wraps > .labels>label{
-    margin-left:15vw;
+.wrapper > .wraps > .loves {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width:90%;
+  
+  padding-left: 2rem;
+  
+  
+}
+.wrapper > .wraps > .loves > label{
+   width: 90%;
     border-radius: 10px;
-   
+   font-size: 1rem;
     cursor: pointer;
     height: 2.1rem;
-}
-.wrapper > .wraps > .labels:hover{
-    scale:1.001;
+    display: flex;
+    align-items: center;
+    
+   
+    
 }
 
-.wrapper > .wraps  >button {
+
+.wrapper > .wraps  > .bttns {
   transition: 1000ms ease-in-out;
   background-color: rgba(15, 179, 34, 0.751);
   border: none;
   color: #f0ecec;
-  margin-left:29.5vw;
-  margin-bottom: 2px;
-  width: 10vw;
+  width: 30%;
+  margin: auto;
+  height: 2.6rem;
+  padding: 10px;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  
+
 
   
 }
-.wrapper > .wraps  >button:hover{
-    scale: 1.1;
-    background-color: rgba(13, 151, 29, 0.751);
-    margin-left:29.2vw;
-  
-}
+
 
 .error {
   height: 70px;

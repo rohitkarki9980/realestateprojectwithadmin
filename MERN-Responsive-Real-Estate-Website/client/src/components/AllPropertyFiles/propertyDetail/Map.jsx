@@ -16,6 +16,7 @@ const Map = ({ address,district, country },position) => {
         zIndex: 0,
        
     }}
+    
     animate={true} 
     >
         <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'/>

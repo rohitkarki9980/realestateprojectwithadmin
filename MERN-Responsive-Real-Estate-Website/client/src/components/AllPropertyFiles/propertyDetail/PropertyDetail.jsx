@@ -1,33 +1,30 @@
 import React from "react";
 import classes from "./propertyDetail.module.css";
-import person from "../../../assets/person.jpg";
-import emailjs from "@emailjs/browser";
 import { useSelector } from "react-redux";
-import { AiOutlineClose } from "react-icons/ai";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react"; // Imported `useState`
 import { request } from "../../../util/fetchAPI";
-import { FaBed, FaSquareFull } from "react-icons/fa";
 import { BsBookmark, BsFillBookmarkFill } from "react-icons/bs";
-import { useRef } from "react";
+
 import Comment from "../../comment/Comment";
 import Map from "./Map";
+import { motion, AnimatePresence } from 'framer-motion';
+
 
 const PropertyDetail = () => {
 
   const { token, user } = useSelector((state) => state.auth);
   const [propertyDetail, setPropertyDetail] = useState(null);
   const [showForm, setShowForm] = useState(false);
-  const [desc, setDesc] = useState("");
-  const [phno, setPhoneno] = useState(""); // Corrected default value
+
   const [isBookmarked, setIsBookmarked] = useState(false);
-  const [success, setSuccess] = useState(false);
+
   const [commentText, setCommentText] = useState("");
   const [comments, setComments] = useState([]);
   // todo display message
   const [shortComment, setShortComment] = useState(false);
   const { id } = useParams();
-  const formRef = useRef();
+
   const navigate = useNavigate();
   const [isVerify, setIsVerify] = useState(false);
   
@@ -37,8 +34,9 @@ const PropertyDetail = () => {
       try {
         const property = await request(`/property/find/${id}`, "GET");
         setIsBookmarked(property?.bookmarkedUsers?.includes(user?._id));
-       
+        
         setPropertyDetail(property);
+        
         setIsVerify(property.isVerified);
       } catch (error) {
         console.error(error);
@@ -46,6 +44,9 @@ const PropertyDetail = () => {
     };
     fetchDetails();
   }, [id]);
+ 
+
+ 
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -63,34 +64,9 @@ const PropertyDetail = () => {
 
   const handleCloseForm = () => {
     setShowForm(false);
-    setPhoneno("");
-    setDesc("");
   };
 
-  const handleContactOwner = async (e) => {
-    e.preventDefault();
-
-    emailjs
-      .sendForm(
-        "service_hmq6fk9",
-        "template_mmcwgkv",
-        formRef.current,
-        "PPLnFojFfevjvYEuv"
-      )
-
-      .then(
-        (result) => {
-          handleCloseForm();
-          setSuccess(true);
-          setTimeout(() => {
-            setSuccess(false);
-          }, 2500);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
-  };
+ 
 
   const [allProperties, setAllProperties] = useState([]);
  
@@ -182,13 +158,9 @@ const PropertyDetail = () => {
             
               <h3 className={classes.title}>
                 <span> Title : </span>
-                <span> {`${propertyDetail?.title}`}</span>
+                <span> {`${propertyDetail?.title.charAt(0).toUpperCase() }${propertyDetail?.title.slice(1)}`}</span>
               </h3>
-             
-            
-
-         
-             
+          
                 <div className={classes.boxes}>
                   
                   Type: <span>{`${propertyDetail?.type.charAt(0).toUpperCase()}${propertyDetail?.type.slice(1)}`}</span>
@@ -213,31 +185,35 @@ const PropertyDetail = () => {
                 </div>
               
               <h4 className={classes.desc} style={{width:"70%"}}>
-              Desc: <span style={{fontSize:"0.7rem",overflow:"hidden",textOverflow: 'ellipsis',  whiteSpace: 'nowrap'}}>{`${propertyDetail?.desc}`}</span>
+              Desc: <span style={{fontSize:"1rem",overflow:"hidden", whiteSpace: 'nowrap' ,color:"grey"}}>{`${propertyDetail?.desc.charAt(0).toUpperCase() + propertyDetail?.desc.slice(1)}`}</span>
               </h4>
              
             {user?._id === propertyDetail?.currentOwner?._id && (
               <div className={classes.controls}>
-                <Link to={`/editProperty/${id}`}>Edit</Link>
-                <button onClick={handleDelete}>Delete</button>
+                <Link to={`/editProperty/${id}`} className={classes.bttnsOne}>Edit</Link>
+                <button className={classes.bttns} onClick={handleDelete}>Delete</button>
               </div>
             )}
           </div>
           <div className={classes.right}>
-          <div className={classes.map}>
+          <div className={classes.map} style={{fontSize:"1.2rem",display:"flex",flexDirection:"column",justifyContent:"center"}}>
                 Location :{propertyDetail?.location}
                 <Map
                  address={propertyDetail?.location} district={`,${propertyDetail?.district},` } country={"Nepal"}
-                />
+                
+                 style={{borderRadius:"12px"}}/>
               </div>
           </div>
+
+          
            </div>
           <div className={classes.bookContact}>
             {user?._id != null &&
               user?._id !== propertyDetail?.currentOwner?._id.toString() && (
-                <div className={classes.contactBookmarkControls}>
+               
+                 <div className={classes.contactBookmarkControls}>
                   <button
-                    onClick={() => setShowForm(true)}
+                  onClick={() => setShowForm(true)}
                     className={classes.contactOwner}
                   >
                     Contact owner
@@ -250,6 +226,7 @@ const PropertyDetail = () => {
                     )}
                   </span>
                 </div>
+                
               )}
             {user?._id == null && (
               <Link to={`/signin`}>
@@ -263,55 +240,27 @@ const PropertyDetail = () => {
       </div>
       {showForm && (
         <div className={classes.contactForm} onClick={handleCloseForm}>
-          <div
-            className={classes.contactFormWrapper}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h2>Enquires form</h2>
-            <form onSubmit={{ handleContactOwner }} ref={formRef}>
-              <input
-                value={user?.email}
-                type="text"
-                placeholder="E-mail"
-                name="from_email"
-              />
-              <input
-                value={user?.username}
-                type="text"
-                placeholder="Username"
-                name="from_username"
-              />
-
-              <input
-                type="tel"
-                id="buyerPhone"
-                name="buyerPhone"
-                value={phno}
-                onChange={(e) => setPhoneno(e.target.value)}
-                placeholder="Enter buyer's phone number (e.g., 1234567890)"
-              />
-
-              <input
-                value={propertyDetail?.currentOwner?.email}
-                type="email"
-                placeholder="Owner email"
-                name="to_email"
-              />
-              <input
-                value={desc}
-                type="text"
-                placeholder="Desc"
-                name="message"
-                onChange={(e) => setDesc(e.target.value)}
-              />
-              <button className={classes.bttns}> Send Mail and Message</button>
-            </form>
-            <AiOutlineClose
-              onClick={handleCloseForm}
-              className={classes.removeIcon}
-            />
-          </div>
+          <AnimatePresence>
+        <motion.div 
+         initial={{ height: 0, opacity: 0 }}
+         animate={{ height: 'auto', opacity: 1 }}
+         exit={{ height: 0, opacity: 0 }}
+         transition={{ duration: 0.3 }}
+         
+        className={classes.contactFormWrapper}
+        onClick={(e) => e.stopPropagation()}
+        >
+          <h2>Before proceeding further you have to pay the service charge of 1000rs 
+            for making our service more better.
+             </h2>
+             <div className={classes.buttons}>
+            <Link to={`/paymentPage/${id}`}> <button>Yes</button></Link>
+          <button onClick={handleCloseForm} >No</button>
+             </div>
+          </motion.div>
+          </AnimatePresence>
         </div>
+        
       )}
 
       {shortComment && (
@@ -357,11 +306,7 @@ const PropertyDetail = () => {
             <h2 className={classes.noCommentsMessage}>No comments yet.</h2>
           )}
         </div>
-        {success && (
-          <div className={classes.success}>
-            You've successfully contacted the owner of the property!
-          </div>
-        )}
+        
       </div>
     </div>
   ) : (

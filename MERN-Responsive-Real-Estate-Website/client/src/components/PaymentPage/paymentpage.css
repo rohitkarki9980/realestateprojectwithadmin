@@ -1,0 +1,71 @@
+.containers{
+width: 70%;
+height: 100vh;
+margin: auto;
+display: flex;
+
+
+}
+.lefting{
+    width: 60%;
+  
+    margin-top: 1rem;
+    border-radius: 12px;
+}
+.lefting>img{
+    border-radius: 12px; 
+ height: 80%;
+}
+.right{
+    margin-top: 2rem;
+   display:flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: flex-start;
+  
+  
+}
+.right >h2{
+    color: slateblue;
+    font-size: 3rem;
+    font-weight: 700;
+
+}
+.right>.images{
+    display: flex;
+   justify-content: center;
+
+   
+}
+.right>.images>img{
+    width: 40px;
+    height: 40px;
+    
+}
+.right>.images >button {
+    width: 20%;
+    border: none;
+    outline: none;
+    background: wheat;
+    border-radius: 12px;
+   
+}
+.right >h3{
+    text-align: center;
+}
+.right > form{
+    width: 60%;
+    gap: 10px;
+}
+form >input{
+    border: none;
+    padding: 10px;
+    border-radius: 12px;
+}
+.bttns{
+    width: 40%;
+    border: none;
+    outline: none;
+    background: wheat;
+    border-radius: 12px;
+}

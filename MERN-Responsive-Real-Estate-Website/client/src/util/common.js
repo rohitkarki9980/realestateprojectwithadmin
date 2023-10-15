@@ -1,9 +1,4 @@
-export const getMenuStyles = (menuOpened) => {
-    if (document.documentElement.clientWidth <= 800) {
-      return { right: !menuOpened && "-100%" };
-    }
-  };
-  
+
   export const sliderSettings = {
     slidesPerView: 1,
     spaceBetween: 50,

@@ -26,7 +26,7 @@ console.log(address)
         if (results.length > 0) {
           const { x, y } = results[0];
           setPosition([y, x]);
-          map.flyTo([y,x],13)
+          map.flyTo([y,x],16)
           console.log('Geocoded position:', position); // Log the position
         }
       })
@@ -38,7 +38,7 @@ console.log(address)
   console.log('Current position:', position); // Log the current position
 
   return (
-    <Marker position={position} icon={DefaultIcon}>
+    <Marker position={position} icon={DefaultIcon} >
       <Popup>{address}</Popup>
     </Marker>
   );

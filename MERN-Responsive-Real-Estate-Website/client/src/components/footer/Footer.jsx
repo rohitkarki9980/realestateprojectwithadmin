@@ -78,7 +78,7 @@ const Footer = () => {
            <div>
 
         <div className={classes.copyRight}>
-        <span><AiFillCopyrightCircle size={"30px"} color="white" style={{width:"10%"}}/> All the trademark goes to Nepal Homes</span> 
+        <span><AiFillCopyrightCircle size={"30px"} color="white" style={{width:"10%"}}/>© Copyright 2021 NepalHomes. All Rights Reserved.</span> 
         </div>
       </div>
         </div>
